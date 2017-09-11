@@ -6,13 +6,25 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
   $scope.teamNum;
   $scope.roundNum;
   $scope.seedType;
-  $scope.tournament = {
+  $scope.teams = [];
+  $scope.tournamentRules = {
     poolNum: $scope.poolNum,
     teamNum: $scope.teamNum,
     roundNum: $scope.roundNum,
     seedType: $scope.seedType,
     // pools: []
   };
+
+  function submitRules(){
+
+  }
+
+  function buildTeams(){
+    for (var i = 1; i <= teamNum; i++) {
+      $scope.teams.push('Team ' + i);
+    }
+    return $scope.teams;
+  }
 
 // Tournament values should be set by the form in the HTML.
 // Onclick function should take tournament object/values and create Pool objects
@@ -39,4 +51,6 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
 //   }
 //   return;
 // }
+
+
 }]);

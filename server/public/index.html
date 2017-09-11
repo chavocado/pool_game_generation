@@ -14,25 +14,25 @@
     <ul>
       <li>
         <label for="poolNum">Number of Pools</label>
-        <input type="number" name="poolNum" ng-model="tournament." value="" min="1">
+        <input type="number" name="poolNum" ng-model="tournamentRules.poolNum" value="" min="1">
       </li>
       <li>
         <label for="teamNum">Number of Teams</label>
-        <input type="number" name="teamNum" value="" min="1">
+        <input type="number" name="teamNum" ng-model="tournamentRules.teamNum" value="" min="1">
       </li>
       <li>
         <label for="roundNum">Number of Rounds</label>
-        <input type="number" name="roundNum" value="" min="1">
+        <input type="number" name="roundNum" ng-model="tournamentRules.roundNum" value="" min="1">
       </li>
       <li>
         <label for="seedType">Select Your Tournament Seeding Type</label>
         <ul>
-          <li><input type="radio" name="seedType" value="snake" checked>Snake</li>
-          <li><input type="radio" name="seedType" value="sequential">Sequential</li>
+          <li><input type="radio" name="seedType" ng-model="tournamentRules.seedType" value="snake" checked>Snake</li>
+          <li><input type="radio" name="seedType" ng-model="tournamentRules.seedType" value="sequential">Sequential</li>
         </ul>
       </li>
       <li>
-        <button ng-click="submitTournament(tournament)">Submit</button>
+        <button ng-click="submitRules(tournamentRules)">Submit</button>
       </li>
     </ul>
   </body>
