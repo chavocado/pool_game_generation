@@ -3,9 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title>Pool Game Generation</title>
-    
+    <!-- Angular -->
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <!-- Client App and controllers -->
+   <script type="text/javascript" src="/scripts/clientapp.js"></script>
+   <script type="text/javascript" src="/scripts/controllers/pool_app.js"></script>
   </head>
-  <body>
-    <h1>Hello World!</h1>
+  <body ng-app="myApp">
+    <h1>Tournament Builder</h1>
+    <ul>
+      <li>
+        <label for="poolNum">Number of Pools</label>
+        <input type="number" name="poolNum" value="" min="1">
+      </li>
+      <li>
+        <label for="teamNum">Number of Teams</label>
+        <input type="number" name="teamNum" value="" min="1">
+      </li>
+      <li>
+        <label for="roundNum">Number of Rounds</label>
+        <input type="number" name="roundNum" value="" min="1">
+      </li>
+      <li>
+        <label for="seedType">Select Your Tournament Seeding Type</label>
+        <ul>
+          <li><input type="radio" name="seedType" value="snake">Snake</li>
+          <li><input type="radio" name="seedType" value="sequential">Sequential</li>
+        </ul>
+      </li>
+      <li>
+        <button ng-click="submitOrder()">Submit</button>
+      </li>
+    </ul>
   </body>
 </html>
