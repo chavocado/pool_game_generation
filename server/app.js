@@ -1,16 +1,18 @@
 // dependencies
-const express        = require('express');
-const bodyParser     = require('body-parser');
-//is this needed anymore???
-//const path = require('path');
-const app            = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const app = express();
 
+const index = require('./routes/index');
 
+// Serve back static files
+app.use(express.static(path.join(__dirname, './public')));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-
-
-
-
+// Routes
+app.use('/', index);
 
 //port listener
 const port = 8000;

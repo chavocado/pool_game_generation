@@ -1,7 +1,7 @@
-#Pool Game Generation Assignment
+# Pool Game Generation Assignment
 
 
-##Basic Requirements
+## Basic Requirements
 * Nothing needs to be persisted.
 * The endpoint needs to accept the following parameters:
 * Number of pools.
