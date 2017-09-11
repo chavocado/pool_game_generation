@@ -12,7 +12,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     teamNum: $scope.teamNum,
     roundNum: $scope.roundNum,
     seedType: $scope.seedType,
-    // pools: []
+    pools: []
   };
 
   function submitRules(){
@@ -20,10 +20,18 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
   }
 
   function buildTeams(){
-    for (var i = 1; i <= teamNum; i++) {
+    for (var i = 1; i <= $scope.tournamentRules.teamNum; i++) {
       $scope.teams.push('Team ' + i);
     }
     return $scope.teams;
+  }
+
+  function buildPools(teams){
+    for (var i = 0; i < $scope.tournamentRules.pools.length; i++) {
+      var pool new Object();
+      pool.name = 'Pool ' + String.fromCharCode(65 + i);
+      $scope.tournamentRules.pools.push(pool);
+    }
   }
 
 // Tournament values should be set by the form in the HTML.
