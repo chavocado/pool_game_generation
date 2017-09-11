@@ -5,12 +5,14 @@
     <title>Pool Game Generation</title>
     <!-- Angular -->
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
     <!-- Client App and controllers -->
-   <script type="text/javascript" src="/scripts/clientapp.js"></script>
-   <script type="text/javascript" src="/scripts/controllers/pool_app.js"></script>
+    <script type="text/javascript" src="/scripts/clientapp.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/pool_app.js"></script>
   </head>
-  <body ng-app="myApp">
+  <body ng-app="myApp" ng-controller="PoolController">
     <h1>Tournament Builder</h1>
+    <form>
     <ul>
       <li>
         <label for="poolNum">Number of Pools</label>
@@ -18,7 +20,7 @@
       </li>
       <li>
         <label for="teamNum">Number of Teams</label>
-        <input type="number" name="teamNum" ng-model="tournamentRules.teamNum" value="" min="1">
+        <input type="number" name="teamNum" ng-model="tournamentRules.teamNum" value="" min="2">
       </li>
       <li>
         <label for="roundNum">Number of Rounds</label>
@@ -35,5 +37,6 @@
         <button ng-click="submitRules(tournamentRules)">Submit</button>
       </li>
     </ul>
+    </form>
   </body>
 </html>

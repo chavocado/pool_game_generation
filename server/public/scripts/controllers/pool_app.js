@@ -2,11 +2,10 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
   console.log('pool controller running');
   //$scope.message = "Pool Controller!";
   //tournament variables
-  $scope.poolNum;
-  $scope.teamNum;
-  $scope.roundNum;
-  $scope.seedType;
-  $scope.teams = [];
+  // $scope.poolNum;
+  // $scope.teamNum;
+  // $scope.roundNum;
+  // $scope.seedType;
   $scope.tournamentRules = {
     poolNum: $scope.poolNum,
     teamNum: $scope.teamNum,
@@ -14,9 +13,9 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     seedType: $scope.seedType,
     // pools: []
   };
-
-  function submitRules(){
-
+  
+ $scope.submitRules = function(rules){
+   console.log('here',$scope.tournamentRules);
   }
 
   function buildTeams(){
