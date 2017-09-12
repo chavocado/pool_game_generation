@@ -1,41 +1,107 @@
 myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
   console.log('pool controller running');
-  //$scope.message = "Pool Controller!";
-  //tournament variables
-  $scope.poolNum;
-  $scope.teamNum;
-  $scope.roundNum;
-  $scope.seedType;
-  $scope.teams = [];
   $scope.tournamentRules = {
     poolNum: $scope.poolNum,
     teamNum: $scope.teamNum,
     roundNum: $scope.roundNum,
     seedType: $scope.seedType,
-    pools: []
   };
+  let pools = [];
+  let teams = [];
 
-  function submitRules(){
-
+ $scope.submitRules = function(rules){
+   console.log('here',$scope.tournamentRules);
+   buildPools();
+   buildTeams();
+   //snakeSeed();
+   sequenceSeed()
   }
 
   function buildTeams(){
     for (var i = 1; i <= $scope.tournamentRules.teamNum; i++) {
-      $scope.teams.push('Team ' + i);
+      teams.push('Team ' + i);
     }
-    return $scope.teams;
+    console.log(teams);
+    return teams;
   }
 
-  function buildPools(teams){
-    for (var i = 0; i < $scope.tournamentRules.pools.length; i++) {
-      var pool new Object();
-      pool.name = 'Pool ' + String.fromCharCode(65 + i);
-      $scope.tournamentRules.pools.push(pool);
+  function buildPools(){
+    for (var i = 0; i < $scope.tournamentRules.poolNum; i++) {
+    let pool = new Object();
+    pool.name = 'Pool ' +  (String.fromCharCode(65 + i));
+    pool.teams = [];
+    pool.games = [];
+    pools.push(pool);
+    console.log(pools);
     }
+    console.log('build pools')
+    return pools;
   }
 
+  function snakeSeed(){
+    let poolIndex = 0;
+    let increase = true;
+    let hold = true;
+    let maxPoolIndex = pools.length - 1;
+    for (var i = 0; i < teams.length; i++) {
+      pools[poolIndex].teams.push(teams[i]);
+      if ((poolIndex >= 0) && (poolIndex < maxPoolIndex) && increase) {
+        poolIndex++;
+        hold = true;
+      } else if (poolIndex === maxPoolIndex && hold) {
+        hold = false;
+        increase = false;
+      } else if (poolIndex === maxPoolIndex && !hold) {
+        poolIndex--;
+        hold = true
+      } else if (poolIndex > 0 && !increase) {
+        poolIndex--;
+      } else if (poolIndex === 0 && hold) {
+        hold = false;
+        increase = true;
+      } else if (poolIndex === 0 && !hold && increase) {
+        poolIndex++;
+        hold = true;
+      }
+    }
+    console.log(pools);
+  }
+
+  function sequenceSeed(){
+    let poolIndex = 0;
+    let maxPoolIndex = pools.length - 1;
+    for (var i = 0; i < teams.length; i++) {
+      pools[poolIndex].teams.push(teams[i]);
+      if (poolIndex === maxPoolIndex) {
+        poolIndex = 0;
+      } else {
+        poolIndex++;
+      }
+    }
+    console.log(pools);
+  }
+
+  function buildGames(){
+    let gameID = 1;
+    for (var i = 0; i < pools.length; i++) {
+      let currentPool = pools[i];
+      for (var j = 0; j < teams.length; j++) {
+        let game = new Object();
+        let currentTeam = currentPool.teams[j];
+        let tempPool = currentPool;
+        let teamsInPool = tempPool.length;
+        game.ID = gameID;
+        for (var k = 0; k < teamsInPool; k++) {
+          game.home = currentTeam;
+          game.visitor =
+        }
+
+      }
+    }
+  }
 // Tournament values should be set by the form in the HTML.
-// Onclick function should take tournament object/values and create Pool objects
+// Onclick function should take tournament object/values and create Pool objec
+// one poold ts
 // with incremented alphabet naming pattern applied as their name property.
 // one approach would be a pools array that holds pool objects
 //  (this would be easier to display on front end with angular)
@@ -44,21 +110,6 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
 //  game algorithm has to be everyone plays everyone in the same group for 1 game per round
 //  games must have unique Identifiers and 2 teams
 
-//   //empty holding array
-//   var games = [];
-//   //generate pool objects
-//   var pools = new Pool();
-//   //loop through param length
-//   for(var i=0; i<poolNum; i++) {
-//     //increment letter portion
-//     //var letter = 'A';
-//     //String.fromCharCode(letter.charCodeAt() + i)
-//     //
-//     if(arr.indexOf(lowerText)<0) arr.push(lowerText);
-//     else if(duplicate.indexOf(lowerText)<0) duplicate.push(lowerText);
-//   }
-//   return;
-// }
 
 
 }]);
