@@ -13,6 +13,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
    console.log('here',$scope.tournamentRules);
    buildPools();
    buildTeams();
+   snakeSeed();
   }
 
   function buildTeams(){
@@ -20,25 +21,56 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
       teams.push('Team ' + i);
     }
     console.log(teams);
-    // return teams;
+    return teams;
   }
   
   function buildPools(){
     for (var i = 0; i < $scope.tournamentRules.poolNum; i++) {
-    var pool = new Object();
-    pool.name = 'Pool ' +  (String.fromCharCode(65 + i))
-      pools.push(pool);
-      console.log(pools);
+    let pool = new Object();
+    pool.name = 'Pool ' +  (String.fromCharCode(65 + i));
+    pool.teams = [];
+    pool.games = [];
+    pools.push(pool);
+    console.log(pools);
     }
     console.log('build pools')
-    // return pools;
+    return pools;
   }
   
   function snakeSeed(){
-    
+    let poolIndex = 0;
+    let increase = true;
+    let hold = true;
+    let maxPoolIndex = pools.length - 1;
+    for (var i = 0; i < teams.length; i++) {
+      pools[poolIndex].teams.push(teams[i]);
+      if ((poolIndex >= 0) && (poolIndex < maxPoolIndex) && increase) {
+        poolIndex++;
+        hold = true;
+      } else if (poolIndex === maxPoolIndex && hold) {
+        hold = false;
+        increase = false;
+      } else if (poolIndex === maxPoolIndex && !hold) {
+        poolIndex--;
+        hold = true
+      } else if (poolIndex > 0 && !increase) {
+        poolIndex--;
+      } else if (poolIndex === 0 && hold) {
+        hold = false;
+        increase = true;
+      } else if (poolIndex === 0 && !hold && increase) {
+        poolIndex++;
+        hold = true;
+      }
+
+    }
+    console.log(pools);
   }
   
   function sequenceSeed(){
+    
+  }
+  function buildGames(){
     
   }
 // Tournament values should be set by the form in the HTML.
