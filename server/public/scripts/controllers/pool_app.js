@@ -9,15 +9,16 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
   let pools = [];
   let teams = [];
 
- $scope.submitRules = function(rules){
+ $scope.submitRules = function(rules) {
    console.log('here',$scope.tournamentRules);
    buildPools();
    buildTeams();
    //snakeSeed();
-   sequenceSeed()
+   sequenceSeed();
+   buildGames();
   }
 
-  function buildTeams(){
+  function buildTeams() {
     for (var i = 1; i <= $scope.tournamentRules.teamNum; i++) {
       teams.push('Team ' + i);
     }
@@ -25,7 +26,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     return teams;
   }
 
-  function buildPools(){
+  function buildPools() {
     for (var i = 0; i < $scope.tournamentRules.poolNum; i++) {
     let pool = new Object();
     pool.name = 'Pool ' +  (String.fromCharCode(65 + i));
@@ -38,7 +39,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     return pools;
   }
 
-  function snakeSeed(){
+  function snakeSeed() {
     let poolIndex = 0;
     let increase = true;
     let hold = true;
@@ -67,7 +68,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     console.log(pools);
   }
 
-  function sequenceSeed(){
+  function sequenceSeed() {
     let poolIndex = 0;
     let maxPoolIndex = pools.length - 1;
     for (var i = 0; i < teams.length; i++) {
@@ -81,34 +82,43 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     console.log(pools);
   }
 
-  function buildGames(){
-    let gameID = 1;
-    for (var i = 0; i < pools.length; i++) {
-      let currentPool = pools[i];
-      for (var j = 0; j < teams.length; j++) {
-        let game = new Object();
-        let currentTeam = currentPool.teams[j];
-        let tempPool = currentPool;
-        let teamsInPool = tempPool.length;
-        game.ID = gameID;
-        for (var k = 0; k < teamsInPool; k++) {
-          game.home = currentTeam;
-          game.visitor =
-        }
+  function buildGames() {
+   let gameID = 1;
+   for (var i = 0; i < $scope.tournamentRules.roundNum; i++) {
+     for (let i = 0; i < pools.length; i++) {
+       let currentPool = pools[i];
+       let teamsLeft = currentPool.teams.length;
+       let shiftedTeams = [];
 
-      }
+       while (teamsLeft > 1) {
+         teamsLeft--;
+         currentTeam = currentPool.teams.shift();
+         shiftedTeams.unshift(currentTeam);
+         for (let k = 0; k < teamsLeft; k++) {
+           let game = new Object();
+           game.ID = gameID;
+           game.home = currentTeam;
+           game.visitor = currentPool.teams[k];
+           currentPool.games.push(game);
+           gameID++;
+       }
+     }
+     for (let l = 0; l < shiftedTeams.length; l++) {
+       currentPool.teams.unshift(shiftedTeams[l]);
+     }
     }
-  }
-// Tournament values should be set by the form in the HTML.
-// Onclick function should take tournament object/values and create Pool objec
-// one poold ts
-// with incremented alphabet naming pattern applied as their name property.
-// one approach would be a pools array that holds pool objects
-//  (this would be easier to display on front end with angular)
-//  these pool objects also need a list of games held in an array
-//  snake seeding for the groups has to occur before the game algorithm runs
-//  game algorithm has to be everyone plays everyone in the same group for 1 game per round
-//  games must have unique Identifiers and 2 teams
+   }
+ }
+// **Tournament values should be set by the form in the HTML.
+// **Onclick function should take tournament object/values and create Pool objec
+// **one poold ts
+// **with incremented alphabet naming pattern applied as their name property.
+// **one approach would be a pools array that holds pool objects
+//  **(this would be easier to display on front end with angular)
+//  **these pool objects also need a list of games held in an array
+//  **snake seeding for the groups has to occur before the game algorithm runs
+//  **game algorithm has to be everyone plays everyone in the same group for 1 game per round
+//  **games must have unique Identifiers and 2 teams
 
 
 
