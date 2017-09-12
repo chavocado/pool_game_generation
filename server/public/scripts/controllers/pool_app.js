@@ -6,14 +6,15 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     roundNum: $scope.roundNum,
     seedType: $scope.seedType,
   };
-  var pools = [];
-  var teams = [];
+  let pools = [];
+  let teams = [];
   
  $scope.submitRules = function(rules){
    console.log('here',$scope.tournamentRules);
    buildPools();
    buildTeams();
-   snakeSeed();
+   //snakeSeed();
+   sequenceSeed()
   }
 
   function buildTeams(){
@@ -68,7 +69,17 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
   }
   
   function sequenceSeed(){
-    
+    let poolIndex = 0;
+    let maxPoolIndex = pools.length - 1;
+    for (var i = 0; i < teams.length; i++) {
+      pools[poolIndex].teams.push(teams[i]);
+      if (poolIndex === maxPoolIndex) {
+        poolIndex = 0;
+      } else {
+        poolIndex++;
+      }
+    }
+    console.log(pools);
   }
   function buildGames(){
     
