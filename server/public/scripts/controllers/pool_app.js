@@ -84,7 +84,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
 
   function buildGames() {
    let gameID = 1;
-   for (var i = 0; i < $scope.tournamentRules.roundNum; i++) {
+   for (var h = 0; h < $scope.tournamentRules.roundNum; h++) {
      for (let i = 0; i < pools.length; i++) {
        let currentPool = pools[i];
        let teamsLeft = currentPool.teams.length;
@@ -97,9 +97,15 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
          for (let k = 0; k < teamsLeft; k++) {
            let game = new Object();
            game.ID = gameID;
-           game.home = currentTeam;
-           game.visitor = currentPool.teams[k];
-           currentPool.games.push(game);
+           if (h % 2 === 0) {
+             game.home = currentTeam;
+             game.visitor = currentPool.teams[k];
+             currentPool.games.push(game);
+           } else {
+             game.home = currentPool.teams[k];
+             game.visitor = currentTeam;
+             currentPool.games.push(game);
+           }
            gameID++;
        }
      }
