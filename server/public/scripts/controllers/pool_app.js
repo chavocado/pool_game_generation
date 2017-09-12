@@ -81,8 +81,24 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     }
     console.log(pools);
   }
+  
   function buildGames(){
-    
+    let gameID = 1;
+    for (var i = 0; i < pools.length; i++) {
+      let currentPool = pools[i];
+      for (var j = 0; j < teams.length; j++) {
+        let game = new Object();
+        let currentTeam = currentPool.teams[j];
+        let tempPool = currentPool;
+        let teamsInPool = tempPool.length;
+        game.ID = gameID;
+        for (var k = 0; k < teamsInPool; k++) {
+          game.home = currentTeam;
+          game.visitor = 
+        }
+        
+      }   
+    }
   }
 // Tournament values should be set by the form in the HTML.
 // Onclick function should take tournament object/values and create Pool objec
