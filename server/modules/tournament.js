@@ -4,21 +4,25 @@ let teams = [];
 
 //Torunament function that gets exported
 function Tournament(data) {
-  console.log('THIS WILL ERROR OUT UNTILL //tournamentRules needs to change to data');
+  console.log('THIS WILL ERROR OUT UNTILL //data needs to change to data');
   console.log('Data is holding :', data);
-  // buildPools();
-  // buildTeams();
-  // if(data.seedType === 'snake'){
-  //   snakeSeed();
-  // } else if (data.seedType === 'sequential') {
-  //   sequenceSeed();
-  // }
-  // buildGames();
+  pools = [];
+  buildPools(data);
+  
+  if(data.seed === 'snake'){
+    snakeSeed();
+  } else if (data.seed === 'sequential') {
+    sequenceSeed();
+  }
+  //if neither throw error and dont build games
+  buildGames(data);
+  console.log('pools', pools);
+  return pools;
 };
 
-function buildPools() {
-  //tournamentRules needs to change to data TODO
-  for (var i = 0; i < tournamentRules.poolNum; i++) {
+function buildPools(data) {
+  //data needs to change to data TODO
+  for (var i = 0; i < Number(data.pools); i++) {
   let pool = new Object();
   pool.name = 'Pool ' +  (String.fromCharCode(65 + i));
   pool.teams = [];
@@ -26,13 +30,13 @@ function buildPools() {
   pools.push(pool);
   console.log(pools);
   }
-  console.log('build pools')
-  return pools;
+  console.log('build pools', data, pools)
+  buildTeams(data);
 }
 
-function buildTeams() {
-  //tournamentRules needs to change to data TODO
-  for (var i = 1; i <= tournamentRules.teamNum; i++) {
+function buildTeams(data) {
+  //data needs to change to data TODO
+  for (var i = 1; i <= Number(data.teams); i++) {
     teams.push('Team ' + i);
   }
   console.log(teams);
@@ -82,10 +86,10 @@ function sequenceSeed() {
   console.log(pools);
 }
 
-function buildGames() {
+function buildGames(data) {
  let gameID = 1;
- //tournamentRules needs to change to data TODO
- for (var h = 0; h < tournamentRules.roundNum; h++) {
+ //data needs to change to data TODO
+ for (var h = 0; h < Number(data.rounds); h++) {
    for (let i = 0; i < pools.length; i++) {
      let currentPool = pools[i];
      let teamsLeft = currentPool.teams.length;
