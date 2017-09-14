@@ -62,8 +62,8 @@
         </thead>
         <tbody>
           <tr id="poolList" ng-repeat="pool in pools">
-            <td id="pool" name="name">{{tournament.name}}</td>
-            <td id="teams" name="teams" ><p ng-repeat="team in teams">{{team}}</p></td>
+            <td id="pool" name="name">{{pool.name}}</td>
+            <td id="teams" name="teams" ><p ng-repeat"x in pool.teams">{{x}}</p></td>
           </tr>
         </tbody>
       </table>
