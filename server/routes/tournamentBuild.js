@@ -12,10 +12,10 @@ router.get('/', function (req, res) {
   if (isNaN(rules.pools) || rules.pools === undefined) {
     errors.push('pools must be a number')
   }
-  if (isNaN(rules.rounds || rules.rounds === undefined)) {
+  if (isNaN(rules.rounds) || rules.rounds === undefined) {
     errors.push('rounds must be a number')
   }
-  if (isNaN(rules.teams || rules.teams === undefined)) {
+  if (isNaN(rules.teams) || rules.teams === undefined) {
     errors.push('teams must be a number')
   }
   if (rules.seed !== 'sequential' && rules.seed !== 'snake'){
