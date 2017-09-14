@@ -78,7 +78,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr id="gameList" ng-repeat="game in games">
+          <tr id="gameList" ng-click="loadFromParent($parent.$index)" ng-repeat="game in pool.games">
             <td id="game" name="name">{{game.gameID}}</td>
             <td id="home" name="home">{{game.home}}</td>
             <td id="visitor" name="visitor">{{game.visitor}}</td>
