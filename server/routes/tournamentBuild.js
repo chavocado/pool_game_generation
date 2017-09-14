@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
   if (isNaN(rules.teams) || rules.teams === undefined) {
     errors.push('teams must be a number')
   }
-  if (rules.seed !== 'sequential' && rules.seed !== 'snake'){
+  if ((rules.seed !== 'sequential') && (rules.seed !== 'snake') || (rules.seed === undefined)){
     errors.push('seed must be a string of "sequential" or "snake]"')
   }
   if(errors.length === 0){
