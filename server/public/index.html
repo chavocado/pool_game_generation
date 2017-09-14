@@ -78,10 +78,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr id="gameList" ng-repeat="(key,value) in pool">
-            <td id="game" name="name">{{key.gameID}}</td>
-            <td id="home" name="home">{{key.home}}</td>
-            <td id="visitor" name="visitor">{{key.visitor}}</td>
+          <tr id="gameList" ng-repeat="(game,value) in pool">
+            <td id="game" name="name">{{game.gameID}}</td>
+            <td id="home" name="home">{{game.home}}</td>
+            <td id="visitor" name="visitor">{{game.visitor}}</td>
           </tr>
         </tbody>
       </table>
