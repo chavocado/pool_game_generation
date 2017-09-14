@@ -12,60 +12,58 @@
     <script type="text/javascript" src="/scripts/controllers/pool_app.js"></script>
   </head>
   <body ng-app="myApp" ng-controller="PoolController">
-    <div class="jumbotron">
-      <h1 class="display-3">TOURNAMENT BUILDER</h1>
-      <p class="lead">Fill out the information below to build a tournament!</p>
-    </div>
-
-
-    <form>
-    <ul>
-      <div class="form-group">
-        <label for="poolNum">Number of Pools</label>
-        <input type="number" name="poolNum" ng-model="tournamentRules.poolNum" value="" min="1">
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-3">TOURNAMENT BUILDER</h1>
+        <p class="lead">Fill out the information below to build a tournament!</p>
       </div>
-      <div class="form-group">
-        <label for="teamNum">Number of Teams</label>
-        <input type="number" name="teamNum" ng-model="tournamentRules.teamNum" value="" min="2">
-      </div>
-      <div class="form-group">
-        <label for="roundNum">Number of Rounds</label>
-        <input type="number" name="roundNum" ng-model="tournamentRules.roundNum" value="" min="1">
-      </div>
-      <fieldset class="form-group">
-        <div class="row">
-          <legend class="col-form-legend col-sm-2">Select Your Tournament Seeding Type</legend>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="snake" checked>
-                Snake
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="sequential">
-                Sequential
-              </label>
+      <form>
+        <div class="form-group col-md-6">
+          <label for="poolNum">Number of Pools</label>
+          <input type="number" name="poolNum" ng-model="tournamentRules.poolNum" value="" min="1">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="teamNum">Number of Teams</label>
+          <input type="number" name="teamNum" ng-model="tournamentRules.teamNum" value="" min="2">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="roundNum">Number of Rounds</label>
+          <input type="number" name="roundNum" ng-model="tournamentRules.roundNum" value="" min="1">
+        </div>
+        <fieldset class="form-group col-md-6">
+          <div class="row">
+            <legend class="col-form-legend col-sm-2">Tournament Seeding Type</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="snake" checked>
+                  Snake
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="sequential">
+                  Sequential
+                </label>
+              </div>
             </div>
           </div>
+        </fieldset>
+          <button ng-click="submitRules(tournamentRules)">Submit</button>
         </div>
-      </fieldset>
-        <button ng-click="submitRules(tournamentRules)">Submit</button>
-      </div>
-    </form>
-    <h3>{{tournament[0].name}}</h3>
-    <h4>{{tournament[0].teams}}</h4>
-    <h4>{{tournament[0].games}}</h4>
-    <h3>{{tournament[1].name}}</h3>
-    <h4>{{tournament[1].teams}}</h4>
-    <h4>{{tournament[1].games}}</h4>
-    <h3>{{tournament[2].name}}</h3>
-    <h4>{{tournament[2].teams}}</h4>
-    <h4>{{tournament[2].games}}</h4>
-    <h3>{{tournament[3].name}}</h3>
-    <h4>{{tournament[3].teams}}</h4>
-    <h4>{{tournament[3].games}}</h4>
-
+      </form>
+      <h3>{{tournament[0].name}}</h3>
+      <h4>{{tournament[0].teams}}</h4>
+      <h4>{{tournament[0].games}}</h4>
+      <h3>{{tournament[1].name}}</h3>
+      <h4>{{tournament[1].teams}}</h4>
+      <h4>{{tournament[1].games}}</h4>
+      <h3>{{tournament[2].name}}</h3>
+      <h4>{{tournament[2].teams}}</h4>
+      <h4>{{tournament[2].games}}</h4>
+      <h3>{{tournament[3].name}}</h3>
+      <h4>{{tournament[3].teams}}</h4>
+      <h4>{{tournament[3].games}}</h4>
+    </div>
   </body>
 </html>
