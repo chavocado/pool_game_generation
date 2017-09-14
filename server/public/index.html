@@ -52,18 +52,50 @@
           <button ng-click="submitRules(tournamentRules)">Submit</button>
         </div>
       </form>
-      <h3>{{tournament[0].name}}</h3>
-      <h4>{{tournament[0].teams}}</h4>
-      <h4>{{tournament[0].games}}</h4>
-      <h3>{{tournament[1].name}}</h3>
-      <h4>{{tournament[1].teams}}</h4>
-      <h4>{{tournament[1].games}}</h4>
-      <h3>{{tournament[2].name}}</h3>
-      <h4>{{tournament[2].teams}}</h4>
-      <h4>{{tournament[2].games}}</h4>
-      <h3>{{tournament[3].name}}</h3>
-      <h4>{{tournament[3].teams}}</h4>
-      <h4>{{tournament[3].games}}</h4>
+
+      <table ng-if="tournaments.length > 0" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th><b>Group</b></th>
+            <th><b>Teams</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="poolList" ng-repeat="tournament in tournaments | orderBy:'name'">
+            <td id="company" name="name">{{tournament.name}}</td>
+            <td id="company" name="teams">{{tournament.teams}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table ng-if="tournaments.length > 0" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th><b>Game ID</b></th>
+            <th><b>Home Team</b></th>
+            <th><b>Visitor Team</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="gameList" ng-repeat="game in games | orderBy:'name'">
+            <td id="game" name="name">{{game.gameID}}</td>
+            <td id="game" name="home">{{game.home}}</td>
+            <td id="game" name="visitor">{{game.visitor}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>{{tournaments[0].name}}</h3>
+      <h4>{{tournaments[0].teams}}</h4>
+      <h4>{{tournaments[0].games}}</h4>
+      <h3>{{tournaments[1].name}}</h3>
+      <h4>{{tournaments[1].teams}}</h4>
+      <h4>{{tournaments[1].games}}</h4>
+      <h3>{{tournaments[2].name}}</h3>
+      <h4>{{tournaments[2].teams}}</h4>
+      <h4>{{tournaments[2].games}}</h4>
+      <h3>{{tournaments[3].name}}</h3>
+      <h4>{{tournaments[3].teams}}</h4>
+      <h4>{{tournaments[3].games}}</h4>
     </div>
   </body>
 </html>
