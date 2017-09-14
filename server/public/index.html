@@ -63,7 +63,7 @@
         <tbody>
           <tr id="poolList" ng-repeat="pool in pools">
             <td id="pool" name="name">{{pool.name}}</td>
-            <td id="teams" name="teams" ><p ng-repeat"x in pool.teams">{{x}}</p></td>
+            <td id="teams" name="teams" >{{pool.games.join()}}</td>
           </tr>
         </tbody>
       </table>
@@ -77,7 +77,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr id="gameList" ng-repeat="game in games">
+          <tr id="gameList" ng-repeat="game in pool.games">
             <td id="game" name="name">{{game.gameID}}</td>
             <td id="home" name="home">{{game.home}}</td>
             <td id="visitor" name="visitor">{{game.visitor}}</td>
