@@ -30,7 +30,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
 
         console.log(response.data[0], response.data[1]);
         console.log('GET /tournamentBuild', response.data);
-        console.log($scope.pools.teams);
+        console.log($scope.teams);
       });
   //  $http({
   //    method: 'GET',
