@@ -24,10 +24,10 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
         if($scope.pools.status===400){
           alert(response.data.errors[0]);
         }
-        // for(var i = 0; i < $scope.pools.length; i++ ) {
-        //     $scope.games.push($scope.pools[i].games);
-        //   }
-        // }
+        for(var i = 0; i < $scope.pools.length; i++ ) {
+            $scope.games.push($scope.pools[i].games);
+          }
+        }
         console.log(response.data[0], response.data[1]);
         console.log('GET /tournamentBuild', response.data);
         console.log($scope.pools.teams);
