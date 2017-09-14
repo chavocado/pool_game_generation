@@ -49,7 +49,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
               if(response.status == 400 || response.status == 500){
                 alert("response.data.errors[0]");
               }
-           });
+           })
 
   }
 
