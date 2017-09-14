@@ -9,7 +9,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
   $scope.tournamentRules.seedType = 'snake'
   $scope.tournaments = [];
   $scope.teams = [];
-  $scope.games = {};
+  $scope.games = [];
   //let pools = [];
   //let teams = [];
 
@@ -21,6 +21,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
       .then(function (response) {
         console.log(response);
         $scope.tournaments = response.data;
+        console.log(response.data.teams, response.data.games);
         $scope.teams = response.data.teams;
         $scope.games = response.data.games;
         console.log('GET /tournamentBuild', response.data);
