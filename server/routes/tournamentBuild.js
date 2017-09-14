@@ -10,6 +10,7 @@ router.get('/', function (req, res) {
   rules.rounds = Number(rules.rounds);
   
   console.log('This Happened', req.query);
+  //if number of teams is < pools * 2 error TODO
   if (rules.seed === undefined || (rules.seed !== 'snake' && rules.seed !== 'sequential')){
     errors.push('seed must be a string of "sequential" or "snake"')
   }
