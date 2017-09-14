@@ -35,7 +35,7 @@ router.get('/', function (req, res) {
     })
   }
 
-  res.send(Tournament(req.query));
+  //res.send(Tournament(req.query));
 });
 
 module.exports = router;
