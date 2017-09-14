@@ -14,9 +14,9 @@ app.use(bodyParser.json());
 // Routes
 app.use('/tournamentBuild', tournamentBuild);
 app.use('/', index);
-
-//port listener
-const port = 8000;
-app.listen(port, () => {
-  console.log('We are live on ' + port);
+//setter
+app.set('port', process.env.PORT || 5050);
+//listen
+app.listen(app.get('port'), function() {
+    console.log('Listening on port: ', app.get('port'));
 });
