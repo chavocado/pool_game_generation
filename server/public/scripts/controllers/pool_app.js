@@ -21,7 +21,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
       .then(function (response) {
         console.log(response);
         if(response.status == 400 || response.status == 500){
-          alert(response.data.errors[0]);
+          alert("response.data.errors[0]");
         }
         $scope.pools = response.data;
 
