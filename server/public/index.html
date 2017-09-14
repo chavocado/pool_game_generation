@@ -12,7 +12,7 @@
     <script type="text/javascript" src="/scripts/controllers/pool_app.js"></script>
   </head>
   <body ng-app="myApp" ng-controller="PoolController">
-    <div class="container-fluid">
+    <div class="container">
       <div class="jumbotron">
         <h1 class="display-3">TOURNAMENT BUILDER</h1>
         <p class="lead">Fill out the information below to build a tournament!</p>
@@ -53,10 +53,10 @@
         </div>
       </form>
 
-      <table ng-if="tournaments.length > 0" class="table table-striped table-bordered" ng-repeat="tournament in tournaments | orderBy:'name'">
+      <table ng-if="tournaments.length > 0" class="table table-striped table-bordered">
         <thead>
-          <tr>
-            <th><b>Group</b></th>
+          <tr ng-repeat="tournament in tournaments | orderBy:'name'">
+            <th><b>Groups</b></th>
             <th><b>Teams</b></th>
           </tr>
         </thead>
