@@ -18,6 +18,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
       .then(function (response) {
         console.log(response);
         $scope.tournaments = response.data;
+        $scope.teams = response.data.teams;
         $scope.games = response.data.games;
         console.log('GET /tournamentBuild', response.data);
       });
