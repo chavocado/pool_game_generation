@@ -7,8 +7,11 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
     seedType: $scope.seedType,
   };
   $scope.tournamentRules.seedType = 'snake'
-  let pools = [];
-  let teams = [];
+  $scope.tournaments = [];
+  $scope.teams = [];
+  $scope.games = {};
+  //let pools = [];
+  //let teams = [];
 
  $scope.submitRules = function(data) {
    console.log('here', $scope.tournamentRules);
