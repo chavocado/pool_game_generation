@@ -20,7 +20,7 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
    $http.get('/tournamentBuild/' + request)
       .then(function (response) {
         console.log(response);
-        if(response.status === 400 || response.status === 400){
+        if(response.status == 400 || response.status == 500){
           alert(response.data.errors[0]);
         }
         $scope.pools = response.data;
