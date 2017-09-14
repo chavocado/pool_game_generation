@@ -79,25 +79,13 @@
         </thead>
         <tbody>
           <tr id="gameList" ng-click="loadFromParent($parent.$index)" ng-repeat="game in pool.games">
-            <td id="game" name="name">{{game.gameID}}</td>
+            <td id="game" name="name">{{game.ID}}</td>
             <td id="home" name="home">{{game.home}}</td>
             <td id="visitor" name="visitor">{{game.visitor}}</td>
           </tr>
         </tbody>
       </table>
 
-      <!-- <h3>{{tournaments[0].name}}</h3>
-      <h4>{{tournaments[0].teams}}</h4>
-      <h4>{{tournaments[0].games}}</h4>
-      <h3>{{tournaments[1].name}}</h3>
-      <h4>{{tournaments[1].teams}}</h4>
-      <h4>{{tournaments[1].games}}</h4>
-      <h3>{{tournaments[2].name}}</h3>
-      <h4>{{tournaments[2].teams}}</h4>
-      <h4>{{tournaments[2].games}}</h4>
-      <h3>{{tournaments[3].name}}</h3>
-      <h4>{{tournaments[3].teams}}</h4>
-      <h4>{{tournaments[3].games}}</h4> -->
     </div>
   </body>
 </html>
