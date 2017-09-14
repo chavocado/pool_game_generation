@@ -68,7 +68,7 @@
         </tbody>
       </table>
 
-      <table ng-show="pools.length > 0" class="table table-striped table-bordered" ng-repeat="pool in pools">
+      <table ng-show="pools.length > 0" class="table table-striped table-bordered" ng-repeat="game in pools.games">
         <h2>{{pool.name}}</h2>
         <thead>
           <tr>
@@ -78,7 +78,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr id="gameList" ng-repeat="(game,value) in pool">
+          <tr id="gameList" ng-repeat="(game,value) in pool.games">
             <td id="game" name="name">{{game.gameID}}</td>
             <td id="home" name="home">{{game.home}}</td>
             <td id="visitor" name="visitor">{{game.visitor}}</td>
