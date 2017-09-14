@@ -2,11 +2,10 @@
 let pools = [];
 let teams = [];
 
-//Torunament function that gets exported
+//Tournament function that gets exported
 function Tournament(data) {
-  console.log('THIS WILL ERROR OUT UNTILL //data needs to change to data');
-  console.log('Data is holding :', data);
   pools = [];
+  teams = [];
   buildPools(data);
   
   if(data.seed === 'snake'){
@@ -16,33 +15,28 @@ function Tournament(data) {
   }
   //if neither throw error and dont build games
   buildGames(data);
-  console.log('pools', pools);
   return pools;
 };
 
+//Function the Builds Pools
 function buildPools(data) {
-  //data needs to change to data TODO
   for (var i = 0; i < Number(data.pools); i++) {
   let pool = new Object();
   pool.name = 'Pool ' +  (String.fromCharCode(65 + i));
   pool.teams = [];
   pool.games = [];
   pools.push(pool);
-  console.log(pools);
   }
-  console.log('build pools', data, pools)
   buildTeams(data);
 }
-
+//function that Builds Teams
 function buildTeams(data) {
-  //data needs to change to data TODO
   for (var i = 1; i <= Number(data.teams); i++) {
     teams.push('Team ' + i);
   }
-  console.log(teams);
   return teams;
 }
-
+//
 function snakeSeed() {
   let poolIndex = 0;
   let increase = true;
@@ -69,7 +63,6 @@ function snakeSeed() {
       hold = true;
     }
   }
-  console.log(pools);
 }
 
 function sequenceSeed() {
@@ -83,12 +76,10 @@ function sequenceSeed() {
       poolIndex++;
     }
   }
-  console.log(pools);
 }
 
 function buildGames(data) {
  let gameID = 1;
- //data needs to change to data TODO
  for (var h = 0; h < Number(data.rounds); h++) {
    for (let i = 0; i < pools.length; i++) {
      let currentPool = pools[i];
