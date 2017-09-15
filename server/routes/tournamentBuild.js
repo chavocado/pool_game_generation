@@ -25,6 +25,9 @@ router.get('/', function (req, res) {
   if (isNaN(rules.rounds) || rules.rounds === undefined) {
     errors.push('rounds must be a number greater than or equal to 1')
   }
+  if (rules.seed == 'snake' && rules.pools === 1){
+    errors.push('pools must be a number greater than or equal to 2 when selecting snake seeding')
+  }
 
   if(errors.length === 0){
     res.send(Tournament(rules));
