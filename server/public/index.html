@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Pool Game Generation</title>
     <!-- Style -->
-    <link rel="stylesheet" href="/vendors/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/vendors/bootstrap.css"/>
     <link rel="stylesheet" href="/vendors/sweetalert2.min.css">
     <link rel="stylesheet" href="/assets/style.css"/>
     <script src="/vendors/sweetalert2.min.js"></script>
@@ -16,12 +16,12 @@
     <script type="text/javascript" src="/scripts/controllers/pool_app.js"></script>
   </head>
   <body ng-app="myApp" ng-controller="PoolController">
-    <div class="container">
+    <div class="container rounded-bottom">
       <div class="jumbotron">
         <h1 class="display-3">TOURNAMENT BUILDER</h1>
         <p class="lead">Fill out the information below to build a tournament!</p>
       </div>
-      <div class="container">
+      <div class="container forminput">
        <div class="container">
         <form>
           <div class="form-group">
@@ -55,14 +55,17 @@
               </div>
             </div>
           </fieldset>
-            <button ng-click="submitRules(tournamentRules)" class="btn btn-info col-md-2">Submit</button>
+            <button ng-click="submitRules(tournamentRules)" class="btn btn-purp col-md-2">Submit</button>
         </form>
+          <br>
+          <br>
+          <br>
     </div>
       <div class="conatiner">
-        
-      
-      <h2 ng-show="pools.length > 0">Tournament</h2>
-      <table ng-show="pools.length > 0" class="table table-striped table-inverse">
+
+
+      <h1 ng-show="pools.length > 0">Tournament</h1>
+      <table ng-show="pools.length > 0" class="table table-striped table-inverse rounded">
         <thead>
           <tr>
             <th><b>Pools</b></th>
@@ -79,7 +82,7 @@
       </div>
       <div ng-show="pools.length > 0"  ng-repeat="pool in pools">
         <h2>Games for {{pool.name}}</h2>
-      <table class="table table-striped table-inverse" >
+      <table class="table table-striped table-inverse rounded" >
         <thead>
           <tr>
             <th><b>Game #</b></th>
@@ -95,6 +98,7 @@
           </tr>
         </tbody>
       </table>
+      <br>
     </div>
   </div>
     </div>
