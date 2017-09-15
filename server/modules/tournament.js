@@ -7,7 +7,7 @@ function Tournament(data) {
   pools = [];
   teams = [];
   buildPools(data);
-  
+
   if(data.seed === 'snake'){
     snakeSeed();
   } else if (data.seed === 'sequential') {
@@ -18,7 +18,7 @@ function Tournament(data) {
   return pools;
 };
 
-//Function the Builds Pools
+//method the Builds Pools, must run before teams are built
 function buildPools(data) {
   for (var i = 0; i < Number(data.pools); i++) {
   let pool = new Object();
@@ -29,14 +29,16 @@ function buildPools(data) {
   }
   buildTeams(data);
 }
-//function that Builds Teams
+//method that Builds Teams must run before games are built
 function buildTeams(data) {
   for (var i = 1; i <= Number(data.teams); i++) {
     teams.push(' Team ' + i);
   }
   return teams;
 }
-//
+//snake seeding method. local variables that act as keys to help get desired
+//snake seed functionality using a loop through the amount of teams in a pool
+//hold is a key that flips when reaching maxPoolIndex and min
 function snakeSeed() {
   let poolIndex = 0;
   let increase = true;
@@ -52,7 +54,7 @@ function snakeSeed() {
       increase = false;
     } else if (poolIndex === maxPoolIndex && !hold) {
       poolIndex--;
-      hold = true
+      hold = true;
     } else if (poolIndex > 0 && !increase) {
       poolIndex--;
     } else if (poolIndex === 0 && hold) {
@@ -64,7 +66,7 @@ function snakeSeed() {
     }
   }
 }
-
+//sequential seeding method
 function sequenceSeed() {
   let poolIndex = 0;
   let maxPoolIndex = pools.length - 1;
@@ -77,11 +79,14 @@ function sequenceSeed() {
     }
   }
 }
-
+//a method for building games. gameID is the unique identifier that is set
+//in every game object. h loop wraps everything and runs based on # of rounds
+// i loop is used to match teams with eachother. k loop sets Object values and
+//swaps home and visitor teams based on # of rounds
 function buildGames(data) {
  let gameID = 1;
  for (var h = 0; h < Number(data.rounds); h++) {
-   for (let i = 0; i < pools.length; i++) {
+   for (var i = 0; i < pools.length; i++) {
      let currentPool = pools[i];
      let teamsLeft = currentPool.teams.length;
      let shiftedTeams = [];
@@ -90,7 +95,7 @@ function buildGames(data) {
        teamsLeft--;
        currentTeam = currentPool.teams.shift();
        shiftedTeams.unshift(currentTeam);
-       for (let k = 0; k < teamsLeft; k++) {
+       for (var k = 0; k < teamsLeft; k++) {
          let game = new Object();
          game.ID = gameID;
          if (h % 2 === 0) {

@@ -1,17 +1,17 @@
 myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
-  console.log('pool controller running');
   $scope.tournamentRules = {
     poolNum: $scope.poolNum,
     teamNum: $scope.teamNum,
     roundNum: $scope.roundNum,
     seedType: $scope.seedType,
   };
+  //angular radio buttons don't always listen to 'selected'
   $scope.tournamentRules.seedType = 'snake'
   $scope.pools = [];
   $scope.games = [];
 
   $scope.submitRules = function(data) {
-    //console.log('here', $scope.tournamentRules);
+    //build query
     let request = '?pools=' + data.poolNum + '&teams=' + data.teamNum +
                   '&rounds=' + data.roundNum + '&seed=' + data.seedType;
     $http.get('/tournamentBuild/' + request)
@@ -20,7 +20,6 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
          for(var i = 0; i < $scope.pools.length; i++ ) {
              $scope.games.push($scope.pools[i].games);
          }
-         //console.log('GET /tournamentBuild', response.data);
        }, function errorCallback(response) {
           if(response.status == 400 || response.status == 500){
             swal('Oops...',
