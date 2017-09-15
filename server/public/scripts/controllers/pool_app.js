@@ -28,5 +28,5 @@ myApp.controller('PoolController', ['$scope','$http',function($scope,$http) {
                  'warning');
           }
        });
-   }; 
+   };
 }]);
