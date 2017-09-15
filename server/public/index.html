@@ -20,43 +20,45 @@
         <h1 class="display-3">TOURNAMENT BUILDER</h1>
         <p class="lead">Fill out the information below to build a tournament!</p>
       </div>
-      <div class="">
-      <form>
-        <div class="form-group col-sm-4">
-          <label class="form-control" for="poolNum">Number of Pools</label>
-          <input class="form-control-label" type="number" name="poolNum" ng-model="tournamentRules.poolNum" value="" min="1">
-        </div>
-        <div class="form-group col-sm-4">
-          <label class="form-control" for="teamNum">Number of Teams</label>
-          <input class="form-control-label" type="number" name="teamNum" ng-model="tournamentRules.teamNum" value="" min="2">
-        </div>
-        <div class="form-group col-sm-4">
-          <label class="form-control" for="roundNum">Number of Rounds</label>
-          <input class="form-control-label" type="number" name="roundNum" ng-model="tournamentRules.roundNum" value="" min="1">
-        </div>
-        <fieldset class="form-group col-sm-4">
-          <div class="row">
-            <legend class="col-form-legend col-sm-12">Tournament Seeding Type</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="snake" checked>
-                  Snake
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="sequential">
-                  Sequential
-                </label>
+       <div class="container">
+        <form>
+          <div class="form-group col-sm-4">
+            <label class="form-control" for="poolNum">Number of Pools</label>
+            <input class="form-control-label" type="number" name="poolNum" ng-model="tournamentRules.poolNum" value="" min="1">
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="form-control" for="teamNum">Number of Teams</label>
+            <input class="form-control-label" type="number" name="teamNum" ng-model="tournamentRules.teamNum" value="" min="2">
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="form-control" for="roundNum">Number of Rounds</label>
+            <input class="form-control-label" type="number" name="roundNum" ng-model="tournamentRules.roundNum" value="" min="1">
+          </div>
+          <fieldset class="form-group col-sm-4">
+            <div class="row">
+              <legend class="col-form-legend col-sm-12">Tournament Seeding Type</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="snake" checked>
+                    Snake
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="seedType" ng-model="tournamentRules.seedType" value="sequential">
+                    Sequential
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-        </fieldset>
-          <button ng-click="submitRules(tournamentRules)" class="btn btn-info col-sm-2">Submit</button>
-        </div>
-      </form>
-      </div>
+          </fieldset>
+            <button ng-click="submitRules(tournamentRules)" class="btn btn-info col-sm-2">Submit</button>
+        </form>
+    </div>
+      <div class="conatiner">
+        
+      
       <h2 ng-show="pools.length > 0">Tournament</h2>
       <table ng-show="pools.length > 0" class="table table-striped table-inverse">
         <thead>
@@ -72,6 +74,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
       <div ng-show="pools.length > 0"  ng-repeat="pool in pools">
         <h2>Games for {{pool.name}}</h2>
       <table class="table table-striped table-inverse" >
