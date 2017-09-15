@@ -32,7 +32,7 @@ function buildPools(data) {
 //function that Builds Teams
 function buildTeams(data) {
   for (var i = 1; i <= Number(data.teams); i++) {
-    teams.push('Team ' + i);
+    teams.push(' Team ' + i);
   }
   return teams;
 }
