@@ -25,7 +25,7 @@
 * Add a parameter that will populate the pools using a sequential seeding method
 
 
-## GET [/tournamentBuilder/{?pools=(number)&teams=(number)&rounds(number)&seed(string)}]
+## GET [/tournamentBuild/{?pools=(number)&teams=(number)&rounds(number)&seed(string)}]
 + Parameters
     + pools (number)
     + teams (number)
