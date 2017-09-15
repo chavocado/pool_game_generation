@@ -10,7 +10,6 @@ router.get('/', function (req, res) {
   rules.rounds = Number(rules.rounds);
 
   console.log('This Happened', req.query);
-  //if number of teams is < pools * 2 error TODO
   if(rules.teams < rules.pools * 2){
     errors.push('Number of Teams must be greater than twice the number of Pools')
   }
@@ -18,13 +17,13 @@ router.get('/', function (req, res) {
     errors.push('seed must be a string of "sequential" or "snake"')
   }
   if (isNaN(rules.pools) || rules.pools === undefined) {
-    errors.push('pools must be a number')
+    errors.push('pools must be a number greater than or equal to 1')
   }
   if (isNaN(rules.rounds) || rules.rounds === undefined) {
-    errors.push('rounds must be a number')
+    errors.push('rounds must be a number greater than or equal to 2')
   }
   if (isNaN(rules.teams) || rules.teams === undefined) {
-    errors.push('teams must be a number')
+    errors.push('teams must be a number greater than or equal to 2')
   }
 
   if(errors.length === 0){
