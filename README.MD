@@ -1,9 +1,9 @@
 # Pool Game Generation
 ## Tournament Builder
 
-+ [Pool Game Generation](https://pool-game-generation.herokuapp.com/)
++ [Pool Game Generation Deployed](https://pool-game-generation.herokuapp.com/)
 
-##Objective
+## Objective
 * Implement an **API endpoint** in any sufficient tech stack that will generate games for a **“pool play”** round of a tournament.
 
 ## Basic Requirements
